@@ -1,9 +1,12 @@
-API_KEY = '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'
+# API_KEY = 'insert here the real key if not setting the environment variable'
 
 import openai
 import PyPDF2
+import os
 
-openai.api_key = API_KEY
+# Uncomment next line (and comment the next below that) if not setting the environment variable
+# openai.api_key = API_KEY 
+openai.api_key = os.getenv('API_KEY')
 image_prompt = ''
 
 def extract_text_from_pdf(file_path):
@@ -34,7 +37,7 @@ def rewrite_text(text, learning_type):
     image_prompt = response2.choices[0].message.content
     return response
 
-def generate_images():
+def generate_image():
     global image_prompt
     response = openai.images.generate(
         model="dall-e-3",

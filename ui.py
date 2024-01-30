@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import ttk, filedialog
 from PIL import Image, ImageTk
-from openai_helper import extract_text_from_pdf, rewrite_text, generate_images
+from openai_helper import extract_text_from_pdf, rewrite_text, generate_image
 import requests
 
 file_path = ''
@@ -20,7 +20,7 @@ def start_process():
     print("Processing...")
     pdf_text = extract_text_from_pdf(file_path)
     rewritten = rewrite_text(pdf_text, chosen_learner_type)
-    image_url = generate_images()
+    image_url = generate_image()
 
     rewritten_text.config(state='normal')
     rewritten_text.delete(1.0, tk.END)
